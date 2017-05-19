@@ -7,6 +7,7 @@
 # Tutorial
 
 * http://rstudio.github.io/shiny/tutorial/#html-ui
+* https://shiny.rstudio.com/gallery/
 
 #
 * h31nr1ch
