@@ -1,0 +1,16 @@
+#Running the aplication inside R
+# open R
+# run library
+library('shiny')
+
+#add aplication (the aplication must be inside the localhost folder)
+#folder localhost/
+#debian
+runApp('/var/www/html/structure/")
+
+#or
+#with you are using ui.R just run
+sourch('run.R')
+library(shiny)
+runApp("~/Udesc/Shiny-R-server/shiny/client")
+
