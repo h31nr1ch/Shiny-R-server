@@ -1,3 +1,3 @@
 #call with sourch('run.R')
 library(shiny)
-runApp("~/Udesc/Shiny-R-server/r-database/application/")
+runApp("~/Udesc/github/Shiny-R-server/r-database/application/server.R")
