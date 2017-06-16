@@ -1,0 +1,70 @@
+.h11 {
+    color: blue;
+    font-family: verdana;
+    font-size: 300%;
+}
+.p  {
+    color: red;
+    font-family: courier;
+    font-size: 160%;
+}
+
+.ul2 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #333;
+}
+
+.li2 a {
+    display: block;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.li2 a:hover {
+    background-color: #555;
+    color: white;
+}
+
+/*bar*/
+.ul1 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.li1 {
+    float: left;
+}
+
+.li1 a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.li1 a:hover {
+    background-color: #111;
+}
+/*end bar*/
+
+
+
+
+
+.left {
+   float: left;
+   padding: 0 20px 20px 0;
+}
+
+.main-content img {
+   float: left;
+   padding: 0 20px 20px 0;
+}
