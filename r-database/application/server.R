@@ -14,7 +14,7 @@ library('sfsmisc')# arrumar ^10 dos graficos
 con <- dbConnect(SQLite(), dbname="tcc_statistics.sqlite")
 #con <- dbConnect(SQLite(), dbname="all.sqlite")
 
-shinyServer(function(input, output) {
+f1 <- function(input, output) {
 
   #pg 71 distribuicao empirica de requicoes por ip
   consultaplot <-dbSendQuery(con, "select questions from DNS_CLIENT;")
@@ -36,7 +36,32 @@ shinyServer(function(input, output) {
      data.frame(x=consultaplot1)
    })
 
-})
+}
+
+f2 <- function(input, output) {
+
+  #pg 71 distribuicao empirica de requicoes por ip
+  consultaplot <-dbSendQuery(con, "select questions from DNS_CLIENT;")
+  consultaplot1 <- fetch(consultaplot)
+  consultaplot1 <- na.omit(consultaplot1)
+  consultaplot1 <- consultaplot1[[1]]
+
+  tableplot2 <- data.frame(consultaplot1)
+
+  output$plot <- renderPlot({
+    plot(ecdf(consultaplot1))
+  })
+
+  output$summary <- renderPrint({
+    summary(ecdf(consultaplot1))
+  })
+
+   output$table <- renderTable({
+     data.frame(x=consultaplot1)
+   })
+}
+
+
 
 # ui <- fluidPage()
 #
