@@ -14,7 +14,19 @@ library('sfsmisc')# arrumar ^10 dos graficos
 con <- dbConnect(SQLite(), dbname="tcc_statistics.sqlite")
 #con <- dbConnect(SQLite(), dbname="all.sqlite")
 
-f1 <- function(input, output) {
+function(input, output) {
+
+  ####################################################################
+  consultaplot <-dbSendQuery(con, "select (count) from  DNS_DOMAIN_SEARCHED;")
+  consultaplot2 <- fetch(consultaplot)
+  consultaplot2 <- na.omit(consultaplot2)
+  consultaplot2 <- consultaplot2[[1]]
+
+  output$plot1 <- renderPlot({
+    plot.ecdf(log(consultaplot2),xaxt="n", main="Distribuição empírica de requisições por RR",xlab="Número de requisições",ylab="Fn(x)")
+    axis(1, at=c(0,3,6,9,12,15))
+  })
+  ####################################################################
 
   #pg 71 distribuicao empirica de requicoes por ip
   consultaplot <-dbSendQuery(con, "select questions from DNS_CLIENT;")
@@ -33,34 +45,9 @@ f1 <- function(input, output) {
   })
 
    output$table <- renderTable({
-     data.frame(x=consultaplot1)
-   })
-
-}
-
-f2 <- function(input, output) {
-
-  #pg 71 distribuicao empirica de requicoes por ip
-  consultaplot <-dbSendQuery(con, "select questions from DNS_CLIENT;")
-  consultaplot1 <- fetch(consultaplot)
-  consultaplot1 <- na.omit(consultaplot1)
-  consultaplot1 <- consultaplot1[[1]]
-
-  tableplot2 <- data.frame(consultaplot1)
-
-  output$plot <- renderPlot({
-    plot(ecdf(consultaplot1))
-  })
-
-  output$summary <- renderPrint({
-    summary(ecdf(consultaplot1))
-  })
-
-   output$table <- renderTable({
-     data.frame(x=consultaplot1)
+     data.frame(consultaplot1)
    })
 }
-
 
 
 # ui <- fluidPage()
