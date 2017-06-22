@@ -14,7 +14,7 @@ library('sfsmisc')# arrumar ^10 dos graficos
 con <- dbConnect(SQLite(), dbname="tcc_statistics.sqlite")
 #con <- dbConnect(SQLite(), dbname="all.sqlite")
 
-function(input, output) {
+server <- function(input, output,session) {
 
   ####################################################################
   consultaplot <-dbSendQuery(con, "select (count) from  DNS_DOMAIN_SEARCHED;")
@@ -69,7 +69,40 @@ function(input, output) {
         print(domain[[1]])
     )
 
+    ####################################################################
+    # Using a custom container and class
+    tags$ul(
+        htmlOutput("summary", container = tags$li, class = "custom-li-output")
+    )
+    ####################################################################
+    renderTimeSeries <- function(expr, env=parent.frame(), quoted=FALSE) {
+    # Convert the expression + environment into a function
+    func <- exprToFunction(expr, env, quoted)
+
+    function() {
+      val <- func()
+      list(start = tsp(val)[1],
+           end = tsp(val)[2],
+           freq = tsp(val)[3],
+           data = as.vector(val))
+    }
+    }
+
+
+    output$timeSeries1 <- renderTimeSeries({
+    ts(matrix(rnorm(300), 100, 3), start=c(1961, 1), frequency=12)
+    })
+
+    ####################################################################
+
+    tags$code("This text will be displayed as computer code.")
+
+    ####################################################################
+
+    output$txt2Test <- renderText({ input$txt2 })
 }
+
+
 
 
 # ui <- fluidPage()
