@@ -13,12 +13,9 @@
     <center>
       <h1 class= "h11">DNSpot Info</h1>
     </center>
-<!---
-      <br>
-      <br>
-      	<a href="../php/login.php" style="float: right;">Info</a>
-      <hr>
---->
+
+
+
       <ul class="ul1" >
        <li class = "li1"><a href="index.html">Home</a></li>
        <li class = "li1"><a href="news.html">News</a></li>
@@ -28,54 +25,36 @@
      </ul>
 
      <br><br><br><br><br>
-
-      <ul class="ul2">
-       <li class = "li2"><a href="table1.html"> Table 1 </a></li>
-       <li class = "li2"><a href="table2.html"> Table 2</a></li>
-       <li class = "li2"><a href="table3.html"> Table 3</a></li>
-       <li class = "li2"><a href="table4.html"> Table 4</a></li>
-       <li class = "li2"><a href="table5.html"> Table 5</a></li>
-       <li class = "li2"><a href="table6.html"> Table 6</a></li>
-       <li class = "li2"><a href="table7.html"> Table 7</a></li>
-       <li class = "li2"><a href="table8.html"> Table 8</a></li>
-       <li class = "li2"><a href="table9.html"> Table 9</a></li>
-     </ul>
+     <center>
+      <h2>Admin Login<h2>
 
 
+        <script type="text/javascript">
+        function display(form){
+        if (form.username.value=="root") {
+        		if (form.password.value=="root") {
+        										location="login.html"
+        											} else {
+        													alert("Invalid Password")
+        													}
+        								} else {  alert("Invalid Username")
+        										}
+        						}
+        			</script>
+        <body >
+
+        <form >
+        <input type="text" name="username" /><br><br>
+        <input type="password" name="password"/><br><br>
+        <input type="button" value="Login" onClick="display(this.form)"/>
+
+        </form>
+
+     </center>
 
 
-<!---
-    <p>
-      <label>Distribution type:</label><br />
-      <select name="dist">
-        <option value="norm">Normal</option>
-        <option value="unif">Uniform</option>
-        <option value="lnorm">Log-normal</option>
-        <option value="exp">Exponential</option>
-      </select>
-    </p>
---->
 
-<!---
-    <p>
-      <label>Consult:</label><br />
-      <input type="number" name="n" value="500" min="1" max="1000" />
-    </p>
---->
 
-<!---
-    <pre id="summary" class="shiny-text-output"></pre>
---->
-
-<!--- WARNING SERVER CONSULT
-    <center>
-    <div id="plot" class="shiny-plot-output" style="width: 28%; height: 400px"></div>
-    </center>
---->
-
-<!---
-    <div id="table" class="shiny-html-output"></div>
---->
 
   </body>
 
